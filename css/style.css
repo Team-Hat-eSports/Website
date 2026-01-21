@@ -1,0 +1,50 @@
+/* =================================
+   Team HAT — Minimal Safety Styles
+   No Visual Identity Imposed
+   ================================= */
+
+/* Prevent weird spacing */
+* {
+  box-sizing: border-box;
+}
+
+/* Improve readability on all screens */
+body {
+  margin: 0;
+  padding: 1rem;
+  max-width: 60rem;
+  line-height: 1.5;
+}
+
+/* Center content naturally */
+header, nav, main, footer {
+  margin-bottom: 1.5rem;
+}
+
+/* Make links usable on mobile */
+a {
+  word-break: break-word;
+}
+
+/* Images never overflow */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Lists don't touch edges */
+ul, ol {
+  padding-left: 1.5rem;
+}
+
+/* Tables behave on mobile (if ever used) */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* Long text never breaks layout */
+pre, code {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
