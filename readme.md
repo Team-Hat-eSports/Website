@@ -4,10 +4,7 @@ Static website for Team HAT leagues, hosted on GitHub Pages.
 
 ## 🚀 Deploy
 
-1. Upload all files to a GitHub repo
-2. Go to Settings → Pages
-3. Source: main branch / root
-4. Save
+DONE
 
 ## ✏️ Updating Content
 
@@ -16,3 +13,8 @@ Static website for Team HAT leagues, hosted on GitHub Pages.
 - Homepage text: edit `index.html`
 
 No build tools required.
+
+___________________________
+
+Add GUL - Season 1
+        - Season 2
