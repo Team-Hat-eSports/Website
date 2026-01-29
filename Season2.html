@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>TEAM HAT</title>
+<style>
+:root{
+  --bg:#07110b;
+  --fog:#0d1c13;
+  --leaf:#1f3d2b;
+  --gold:#9fb38a;
+  --mist:rgba(255,255,255,0.04);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:var(--bg);color:var(--gold);font-family:system-ui,serif;overflow:hidden}
+#forest{
+  position:fixed;inset:0;
+  background:radial-gradient(circle at 50% 120%,var(--leaf),transparent 70%),
+             linear-gradient(var(--bg),var(--fog));
+  opacity:.15;
+  transition:opacity 1.2s ease,filter 1.2s ease;
+}
+#loom{
+  position:fixed;top:0;left:0;height:1px;width:0;
+  background:linear-gradient(90deg,transparent,var(--gold));
+}
+#content{
+  position:absolute;inset:0;
+  display:flex;align-items:center;justify-content:center;
+  text-align:center;padding:4rem;
+}
+.layer{opacity:0;filter:blur(6px);transition:opacity 1s ease,filter 1s ease}
+.layer.visible{opacity:1;filter:none}
+.small{font-size:.85rem;letter-spacing:.05em;opacity:.7}
+.guardians{margin-top:2rem;font-size:.9rem;opacity:.75}
+.standings{
+  margin-top:3rem;
+  padding:1.5rem 2rem;
+  border:1px solid var(--mist);
+  display:none;
+}
+.standings.visible{display:block}
+.link{color:var(--gold);text-decoration:none;opacity:.8}
+.link:hover{opacity:1}
+</style>
+</head>
+<body>
+<div id="loom"></div>
+<div id="forest"></div>
+<div id="content">
+  <div id="lore" class="layer">
+    <div class="small">Team Hat</div>
+    <h1 style="margin:.8rem 0">Season 2</h1>
+    <p class="small">Gods Unchained League</p>
+
+    <div class="guardians layer" id="guardians">
+      Hosted by Team Hat<br/>
+      <span class="small">We host tournaments and stuff.</span>
+    </div>
+
+    <div class="standings" id="standings">
+      <div class="small">League Standings</div>
+      <p class="small" style="margin-top:.5rem">Kept within the Hat.<br/>Updated internally for now.</p>
+    </div>
+
+    <div class="small" style="margin-top:2rem">
+      <a class="link" href="https://discord.gg/kY4454g9Qg" target="_blank">Discord</a> ·
+      <a class="link" href="https://tokentrove.com/collection/GodsUnchainedCards?ref=teamHAT" target="_blank">Community Support</a>
+    </div>
+  </div>
+</div>
+
+<script>
+let presence=0;
+let visits=Number(localStorage.getItem('gdl_visits')||0)+1;
+localStorage.setItem('gdl_visits',visits);
+
+const forest=document.getElementById('forest');
+const lore=document.getElementById('lore');
+const guardians=document.getElementById('guardians');
+const standings=document.getElementById('standings');
+const loom=document.getElementById('loom');
+
+setInterval(()=>{
+  presence++;
+  loom.style.width=Math.min(100,presence*4)+'%';
+
+  if(presence>3){forest.style.opacity=.35}
+  if(presence>6){lore.classList.add('visible')}
+  if(presence>10){guardians.classList.add('visible')}
+  if(presence>16){standings.classList.add('visible')}
+},1000);
+
+let lastMove=Date.now();
+document.addEventListener('mousemove',()=>{
+  lastMove=Date.now();
+  forest.style.filter='blur(2px)';
+});
+
+setInterval(()=>{
+  if(Date.now()-lastMove>1500){
+    forest.style.filter='none';
+  }
+},300);
+</script>
+</body>
+</html>
